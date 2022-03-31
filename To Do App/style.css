@@ -14,22 +14,40 @@
    
 }
 
+.todo_content{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 0px;
+    width: 100%;
+    background-color: #e9e8e8;
+    margin: 5px;
+    
+}
+
+.todo_content:hover{
+    background-color: rgb(181, 179, 179);
+}
+
+.todo_content .action_btn{
+    display: flex;
+    justify-content: space-between;
+}
+
+#todo_container{
+    padding: 1px 10px;
+    margin-left: -6px;
+}
+
 .todos li{
     font-size: 1rem;
     padding: 1rem 2rem;
 }
 
-.options {
-    height: 15%;
-    background-color: beige;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1%;
-}
+
 .icondiv {
     width: 20%;
-    display: inline-block;
+    float:right;
+   ;
 }
 
 .todos li.completed{
@@ -176,13 +194,6 @@ input.new-task {
     margin-right: 5%;
 }
 
-
-/* input[type="checkbox"] {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    -o-appearance: none;
-} */
-
 .icons {
     width: 20%;
     display: flex;
@@ -202,3 +213,22 @@ div.icons span {
 .trash {
     color: red;
 }
+
+#pencil{
+    margin-left: 105px;       /*75*/
+    position: relative;
+    top:-0px
+    
+}
+
+#trash{
+    color:red;
+    font-weight: bold;
+    position: relative;
+    top:-25px;
+    margin-left: 85px   /*35*/
+}
+
+.todo_content input.completed[type="checkbox"]{
+    text-decoration: line-through;
+    }

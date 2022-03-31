@@ -23,34 +23,30 @@
             <div class="add-task">
                 <label for="name" class="new-task">New Task </label>
                 <div class="input">
-                    <input type="text" id="name" name="name" class="new-task" />
-                    <button class="add">Add</button>
+                    <input type="text" id="f1" name="name" class="new-task" />
+                    <button class="add" id="new">Add</button>
+               
                 </div>
+                
             </div>
-            <div class="task-list">
+        
+            <form id="edit" class="form">
+            <div class="task-list" id="tasks">
                 <div class="edit">
                     <div class="input-edit">
+                        
                         <label for="name" class="edit-text">Edit </label>
-                        <input type="text" id="name" name="name" class="edit-task" />
-                        <button class="update">Update</button>
+                        <input type="text" id="fval" name="name" class="edit-task" />
+                        <button class="update" id="edit" type="submit">Update</button>
                     </div>
 
                 </div>
         </form>
-        <form id="app">
-            <div class="options">
-                <ul class="todos" id="todos">
-                    
-                </ul>
-                
-            </div>
-        </form>
-        <div>
+            <div id="todo_container" class="options">
 
-        </div>
+            </div>
     </div>
-    </div>
-    </div>
+    
 
 </body>
 
