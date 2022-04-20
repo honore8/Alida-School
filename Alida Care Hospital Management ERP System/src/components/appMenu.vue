@@ -10,11 +10,12 @@
     <!-- Menu -->
     <nav class="nav">
       <ul class="menu">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="#"> <router-link to="/"> Home </router-link> </a></li>
+        <li><a href="#"><router-link to="/about"> About </router-link></a></li>
         <li><a href="#">Dev</a></li>
       </ul>
     </nav>
+    <router-view></router-view>
   </header>
 
   <!-- Main content -->
@@ -27,6 +28,8 @@
 </template>
 
 <script>
+import router from '../routes.js';
+router.use(router)
 export default {
   name: "appMenu",
 };

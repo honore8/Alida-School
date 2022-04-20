@@ -3,6 +3,7 @@
    <appLoader v-if="show" />
     <appMenu v-else />
     <appLogin v-show="show == false" />
+    <router-view></router-view>
     <!-- <userProfile v-show="show == false" /> -->
   </div>
 </template>
@@ -13,14 +14,16 @@ import appMenu from "./components/appMenu.vue";
 import appLogin from "./components/appLogin.vue";
 import appLoader from "./components/appLoader.vue";
 import userProfile from "./components/userProfile.vue";
-
+import router from './routes.js'
+router.use(router)
+// eslint-disable-next-line no-unused-vars
 export default {
   name: "App",
   components: {
     appMenu,
     appLogin,
     appLoader,
-    userProfile
+    userProfile,
   },
   data() {
       return {
