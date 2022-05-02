@@ -7,11 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
   },
-  "author": {
-    "name": "alida school <alidacode@gmail.com> (https://alidacode.com)",
-    "cohort" : "3",
-    "specialty": "backend"
-  },
+  "author": "Alida School Backend",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.16"

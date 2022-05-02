@@ -1,17 +1,16 @@
+const bodyParser = require('body-parser')
 const express = require ('express');
 const app = express (); //express app init
 const port = 8000; //port number
 const mongoose = require ('mongoose');
-const bodyParser = require ('body-parser');
-
-app.use(express.urlencoded({extended: true}));
-app.use (bodyParser.json())
 
 //connect to mongoDB Database
-mongoose
-        .connect ('mongodb://localhost:27017/schoolTestApp', {useNewUrlParser: true, useUnifiedTopology: true})  
-        .then(() => console.log('MongoDB Connected'))
-         .catch(err => console.log(err));
+const dbURI = 'mongodb+srv://user:Kb69sY9vu463jtDz@cluster0.aer5d.mongodb.net/express_db?retryWrites=true&w=majority'
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then((result) => console.log('connected'))
+    .catch((err) => console.log(err))
+
+app.use(bodyParser.urlencoded({ extended: true }))
 
 //Schema
 const studentSchema = new mongoose.Schema({
@@ -62,11 +61,9 @@ app.get ('/students', (req, res)=>{
 //new student post route
 app.post ('/new-student', (req, res)=>{
     const newStudent = new student(req.body);
-
     newStudent.save((err, doc)=>{
         if(!err){
             console.log(`new student added: ${doc}`);
-            res.end();
         } else {
             console.log(err);
         }
