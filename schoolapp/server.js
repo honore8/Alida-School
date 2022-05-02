@@ -1,8 +1,8 @@
 const bodyParser = require('body-parser')
-const express = require ('express');
-const app = express (); //express app init
+const express = require('express');
+const app = express(); //express app init
 const port = 8000; //port number
-const mongoose = require ('mongoose');
+const mongoose = require('mongoose');
 
 //connect to mongoDB Database
 const dbURI = 'mongodb+srv://user:Kb69sY9vu463jtDz@cluster0.aer5d.mongodb.net/express_db?retryWrites=true&w=majority'
@@ -12,26 +12,28 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
+app.set('view engine', 'ejs')
 //Schema
 const studentSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: 'this field is required'
+        required: 'Name field is required'
     },
 
     gender: {
         type: String,
-        required: false
+        required: 'Gender field is required'
+
     },
 
     department: {
         type: String,
-        required: 'required'
+        required: 'Department field is required'
     },
 
     schoolID: {
         type: String,
-        required: true
+        required: 'School ID field is required'
     },
 
     contactInfo: {
@@ -42,42 +44,44 @@ const studentSchema = new mongoose.Schema({
             street: String,
             houseNumber: String
         }
-    }   
+    }
 
 });
 //student model
 const student = mongoose.model('student', studentSchema);
-        
+
 
 //setting up routes
-app.get ('/', (req, res)=>{
-    res.send('Welcome to home page')
+app.get('/', (req, res) => {
+    res.render('index')
 });
 
-app.get ('/students', (req, res)=>{
+app.get('/students', (req, res) => {
     //
 })
 
 //new student post route
-app.post ('/new-student', (req, res)=>{
-    const newStudent = new student(req.body);
-    newStudent.save((err, doc)=>{
-        if(!err){
-            console.log(`new student added: ${doc}`);
-        } else {
-            console.log(err);
-        }
-    })
+app.route('/new-student').get((req, res) => {
+    return res.render('new-student')
 
-});
+}).post((req, res) => {
+        const newStudent = new student(req.body);
+        console.log(req.body);
+        newStudent.save()
+        .then((result) => {
+            return res.redirect('/')
+        })
+        .catch((err) => {})
+
+    });
 
 
 //404 Page Handler
-app.use((req, res)=>{
+app.use((req, res) => {
     res.status(404).send(`Page not found 😉`);
 })
 
 //listening on port 8000
-app.listen (port, ()=>{ 
+app.listen(port, () => {
     console.log(`Server up and running on port ${port}`);
 })

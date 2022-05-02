@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/header.ejs') %>
+
+<body>
+    
+     <div class="container col-xl-12 px-4 py-5">
+         <div class="row align-items-center g-lg-5 py-5">
+            
+             <div class="col-md-12 mx-auto col-lg-12">
+                 <h2 class="text-center">Add new student</h2>
+                 <form class="p-4 p-md-5 border rounded-3 bg-light" action="/new-student" method="post">
+                     <div class="form-floating mb-3">
+                         <input type="text" class="form-control" name="name" id="floatingInput1" placeholder="John Doe">
+                         <label for="floatingInput1">Name</label>
+                     </div>
+                     
+                     <div class="form-floating mb-3">
+                         <input type="text" class="form-control" id="floatingInput2" name="gender" placeholder="M or F">
+                         <label for="floatingInput2">Gender</label>
+                     </div>
+                     
+                     <div class="form-floating mb-3">
+                         <input type="text" class="form-control" id="floatingInput3" name="department" placeholder="Science">
+                         <label for="floatingInput3">Department</label>
+                     </div>
+                     
+                     <div class="form-floating mb-3">
+                         <input type="text" class="form-control" id="floatingInput4" name="schoolID" placeholder="ALS001">
+                         <label for="floatingInput4">School ID</label>
+                     </div>
+                     
+                     <div class="form-floating mb-3">
+                         <input type="number" class="form-control" name="contactInfo[tel]" id="floatingInput5" placeholder="">
+                         <label for="floatingInput5">Phone</label>
+                     </div>
+                     
+                     <div class="form-floating mb-3">
+                         <input type="email" class="form-control" name="contactInfo[email]" id="floatingInput6" placeholder="name@example.com">
+                         <label for="floatingInput6">Email address</label>
+                     </div>
+                     
+                     <div class="form-floating mb-3">
+                         <input type="text" class="form-control" name="contactInfo[address][city]" id="floatingInput7" placeholder="">
+                         <label for="floatingInput7">City</label>
+                     </div>
+                     <div class="form-floating mb-3">
+                         <input type="text" class="form-control" name="contactInfo[address][street]" id="floatingInput8" placeholder="">
+                         <label for="floatingInput8">Street</label>
+                     </div>
+                     <div class="form-floating mb-3">
+                         <input type="text" class="form-control" name="contactInfo[address][houseNumber]" id="floatingInput9" placeholder="">
+                         <label for="floatingInput9">House number</label>
+                     </div>
+                     
+                     <button class="w-100 btn btn-lg btn-primary" type="submit">Save</button>
+                     <hr class="my-4">
+                 </form>
+             </div>
+         </div>
+     </div>
+
+</body>
+</html>
