@@ -2,6 +2,10 @@ const express = require ('express');
 const app = express (); //express app init
 const port = 8000; //port number
 const mongoose = require ('mongoose');
+const bodyParser = require ('body-parser');
+
+app.use(express.urlencoded({extended: true}));
+app.use (bodyParser.json())
 
 //connect to mongoDB Database
 mongoose
@@ -57,18 +61,12 @@ app.get ('/students', (req, res)=>{
 
 //new student post route
 app.post ('/new-student', (req, res)=>{
-    const {name, gender, department, schoolID, contactInfo:{tel, email, address:{city, street, houseNumber}}} = req.body;
-    const newStudent = new student({
-        name,
-        gender, 
-        department, 
-        schoolID, 
-        tel, email, city, street, houseNumber
-    });
+    const newStudent = new student(req.body);
 
     newStudent.save((err, doc)=>{
         if(!err){
             console.log(`new student added: ${doc}`);
+            res.end();
         } else {
             console.log(err);
         }
